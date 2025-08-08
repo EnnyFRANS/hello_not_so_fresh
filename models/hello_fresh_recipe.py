@@ -17,6 +17,7 @@ class HelloFreshRecipe(models.Model):
     preparation_time = fields.Integer()
     price = fields.Float(compute ='_compute_price')
     ingredient_line_ids = fields.Many2many('product.product', string='Ingredients')
+    steps = fields.Html(string='Steps to follow')
 
     @api.depends('ingredient_line_ids.lst_price')
     def _compute_price(self):
