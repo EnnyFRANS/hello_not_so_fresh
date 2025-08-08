@@ -1,1 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+hello_not_so_fresh.access_hello_fresh_recipe,access_hello_fresh_recipe,hello_not_so_fresh.model_hello_fresh_recipe,base.group_user,1,1,1,1
+hello_not_so_fresh.access_hello_fresh_ingredient,access_hello_fresh_ingredient,hello_not_so_fresh.model_hello_fresh_ingredient,base.group_user,1,1,1,1

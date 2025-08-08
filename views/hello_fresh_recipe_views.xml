@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <!-- kanban -->
+        <record id="hello_fresh_recipe_kanban" model="ir.ui.view">
+            <field name="name">hello.fresh.recipe.kanban</field>
+            <field name="model">hello.fresh.recipe</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile" sample="1">
+                    <templates>
+                        <t t-name="card" class="flex-row">
+                            <main class="pe-2">
+                                <div class="mb-1">
+                                    <div class="d-flex mb-0 h5">
+                                        <field class="me-1" name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                        <field name="name"/>
+                                    </div>
+                                </div>
+                                <span>
+                                    Price:
+                                    <field name="price" widget="monetary"
+                                           options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                                </span>
+                            </main>
+                            <aside>
+                                <field name="image_128" widget="image" alt="Product"
+                                       options="{'img_class': 'w-100 object-fit-contain'}" invisible="not image_128"/>
+                            </aside>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- form -->
+        <record id="view_hello_fresh_recipe_form" model="ir.ui.view">
+            <field name="name">hello.fresh.recipe.form</field>
+            <field name="model">hello.fresh.recipe</field>
+            <field name="arch" type="xml">
+                <form string="Recipes">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="is_recipe"/>
+                            <field name="is_vegetarian"/>
+                            <field name="preparation_time"/>
+                            <field name="price" widget="monetary"/>
+                        </group>
+                        <notebook>
+                            <page string="Ingredients">
+                                <field name="ingredient_line_ids">
+                                    <list editable="bottom">
+                                        <field name="name"/>
+                                        <field name="lst_price"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions -->
+        <record id="open_view_recipe_action" model="ir.actions.act_window">
+            <field name="name">Recipe</field>
+            <field name="res_model">hello.fresh.recipe</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <!-- menu item -->
+        <menuitem id="recipemenuitem"
+                  parent="rootmenuhellofresh"
+                  action="open_view_recipe_action"
+                  sequence="30"/>
+    </data>
+</odoo>

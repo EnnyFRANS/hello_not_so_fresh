@@ -1,1 +1,1 @@
-from . import res_partner
+from . import res_partner, hello_fresh_recipe, hello_fresh_ingredient

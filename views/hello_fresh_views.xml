@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <!-- actions -->
+        <record id="open_view_hello_fresh_action" model="ir.actions.act_window">
+            <field name="name">Client</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[('is_company','=', False),('category_id.name','=', 'Client')]</field>
+        </record>
+
+        <record id="open_client_action" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,list,form</field>
+            <field name="domain">[('is_company','=', False),('category_id.name','=', 'Employees')]</field>
+        </record>
+
+        <!-- Menu Items-->
+        <menuitem
+                id="rootmenuhellofresh"
+                name="Hello Fresh"
+                web_icon="hello_not_so_fresh,static/description/icon.png"
+                sequence="10"/>
+
+        <menuitem id="hellofreshmenuitem"
+                  parent="rootmenuhellofresh"
+                  action="open_view_hello_fresh_action"
+                  sequence="20"/>
+
+        <menuitem id="clientmenuitem"
+                  parent="rootmenuhellofresh"
+                  action="open_client_action"
+                  sequence="30"/>
+    </data>
+</odoo>
